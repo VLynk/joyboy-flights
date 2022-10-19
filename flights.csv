@@ -1,0 +1,8 @@
+flightnumber,callsign,company,aircraftmodel,seatingcapacity,ticketcost,departurelocation,arrivallocation
+
+438763,ACLA320,Indigo,A320,179,5000,Cochin,Sharjah
+
+340434,LLRA625,LearJet,Model 45,14,19000,Cochin,Dubai
+
+185634,LSRB172,Cessna,Cessna 172,3,1200,Cochin,Trivandrum
+
