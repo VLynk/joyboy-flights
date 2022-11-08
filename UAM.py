@@ -1,11 +1,8 @@
-# User Account Manager (U A M)
+# User Authentication Manager (U A M)
 # This module deals with signing and registering a user
 
-import TaFControl
-
-# TicketModules
-userLoginName = ''
-userLoginPassword = ''
+import TaFControl as TaF
+import time
 
 # Signing in a user
 def SignIn():
@@ -24,7 +21,6 @@ def SignIn():
         print(" Account added!")
     else:
         print(" Passwords dont match!")
-
 
 # Logging in a user
 def Login():
@@ -48,15 +44,22 @@ def Login():
         if userLoginName in accountNames:
             if userLoginPassword in accountPasswords:
                 print(" Log in successfull!")
-                TaFControl.TaFMenu()
+                TaF.Hub()
             else:
                 print(" Entered password is wrong!")
         else:
             print(" No such account!")
 
+# TicketModules
+userLoginName = ''
+userLoginPassword = ''
+
 # Login/RegisterMenu
-print("+====+ Welcome to Joyboy's Flights +====+ \n 1 : Register account\n 2 : Login to existing account")
-logMenuChoice = int(input(" Enter your option number \n +>  "))
-logMenuOptions = {1 : SignIn, 2 : Login}
-func = logMenuOptions.get(logMenuChoice, 1)
-func() 
+while True:
+    print("+====+ Welcome to Joyboy's Flights +====+ \n 1 : Register account\n 2 : Login to existing account")
+    logMenuChoice = int(input(" Enter your option number \n +>  "))
+    logMenuOptions = {1 : SignIn, 2 : Login}
+    func = logMenuOptions.get(logMenuChoice, 1)
+    func()
+
+

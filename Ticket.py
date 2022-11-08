@@ -2,41 +2,20 @@ from datetime import datetime
 import TaFControl
 import Banker
 import csv
-import UAM
-
-cardStatus = 0
+import time
 
 def Ticketer(currentUser: str):
     print("+====+ Billing +====+")
     chosenFlight = input("Enter the flight number of your chosen flight +> ")
-    paymentMethod = input("Enter your payment method +> ")
+    paymentMethod = "CARD"
+        
+    Banker.Card()
+    Receipt(paymentMethod, chosenFlight)
 
-    with open("flights.csv", 'r') as flights:
-        flightsReader = csv.reader(flights)
-        allFlightsDetails = []
-        allFlights = []
-
-        for flightDetails in flightsReader:
-            allFlights.append(flightDetails)
-
-        for currentFlightDetails in allFlights[1::]:
-            allFlightsDetails.append(currentFlightDetails)
-            
-    for flight in allFlightsDetails:
-        if flight != []:
-            if flight[0] == chosenFlight:
-                flightId = flight[0]
-            payment = flight[5]
-
-    if paymentMethod.upper() == "CARD":
-        Banker.Card()
-        Receipt(UAM.userLoginName, payment, paymentMethod.upper(), flightId)
-
-def Receipt(currentuser: str, payment: int, paymentMethod: int, chosenFlightNumber: str):
-    currentDateTime = datetime.now()
-    print(payment)
-    print(paymentMethod)
-    print(currentuser)
-    print(chosenFlightNumber)
-    print(currentDateTime)
-    TaFControl.TaFMenu()
+def Receipt(paymentMethod: str, chosenFlightNumber: str):
+    print("#######################################################")
+    currentTime = datetime.now()
+    print(f'Time of Purchase : {currentTime} \nPayment Status : Paid \nPaymentMethod : {paymentMethod} \nChosen Flight : {chosenFlightNumber}')
+    print("######################################################")
+    time.sleep(7)
+    TaFControl.Hub()

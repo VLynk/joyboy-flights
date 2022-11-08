@@ -7,7 +7,7 @@ def Card():
     cvv = input("Enter CVV +> ")
     expDate = input("Enter expiry date +> ")
 
-    if random.randrange(0, 100) < 80:
+    if random.randrange(0, 100) < 55:
         print("Card accepted! Printing Reciept")
     else:
         print("Card Declined! Try Again")
